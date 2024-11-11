@@ -71,5 +71,5 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-![alt text](doc_img/img3.png)
-The current image size is 59MB (from 903MB previously)
+![alt text](doc_img/img4.png)
+The final image size is 59MB
