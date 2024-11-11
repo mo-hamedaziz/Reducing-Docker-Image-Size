@@ -73,3 +73,6 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ![alt text](doc_img/img4.png)
 The final image size is 59MB
+
+
+Conclusion: We went from 1.86GB to 59MB ==> 97% gain.
