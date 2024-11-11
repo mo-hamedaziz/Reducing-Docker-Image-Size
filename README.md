@@ -51,3 +51,25 @@ CMD ["nginx", "-g", "daemon off;"]
 
 ![alt text](doc_img/img3.png)
 The current image size is 59MB (from 903MB previously)
+
+
+4. Installing only production dependencies
+```
+# Stage1: Build
+FROM node:alpine AS build
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --production
+COPY . .
+RUN npm run build
+
+# Stage2: Serve with nginx
+FROM nginx:alpine AS production
+RUN rm -rf /usr/share/nginx/html/*
+COPY --from=build /app/build /usr/share/nginx/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+![alt text](doc_img/img4.png)
+The final image size is 59MB
